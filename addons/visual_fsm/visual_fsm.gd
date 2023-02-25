@@ -1,9 +1,12 @@
 tool
 extends Node
 
-onready var _parent_node = get_parent() 
+onready var _parent_node = get_parent()
+var LoggerInterface = preload("logger_interface.gd")
+var LogCategory = LoggerInterface.LogCategory
 export var fsm : Resource
 var _current_state: VFSMState
+var _logger = null
 
 
 func _set_current_state(_state : VFSMState):
@@ -91,3 +94,8 @@ func _get_property_list() -> Array:
 			"usage": PROPERTY_USAGE_NOEDITOR
 		}
 	]
+
+
+func set_logger(logger):
+	if logger is LoggerInterface:
+		_logger = logger
