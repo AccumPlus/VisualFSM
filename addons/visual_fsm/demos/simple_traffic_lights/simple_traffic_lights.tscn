@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://addons/visual_fsm/fsm/vfsm.gd" type="Script" id=1]
 [ext_resource path="res://addons/visual_fsm/fsm/vfsm_state.gd" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://addons/visual_fsm/fsm/vfsm_trigger_action.gd" type="Script" id=4]
 [ext_resource path="res://addons/visual_fsm/demos/simple_traffic_lights/traffic_lights.gd" type="Script" id=5]
 [ext_resource path="res://addons/visual_fsm/fsm/vfsm_trigger_timer.gd" type="Script" id=6]
+[ext_resource path="res://addons/visual_fsm/demos/simple_traffic_lights/simple_traffic_lights.gd" type="Script" id=7]
 
 [sub_resource type="GDScript" id=1]
 script/source = "# State: Green
@@ -243,6 +244,7 @@ triggers = [ SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResourc
 transitions = [ 0, 0, 1, 1, 1, 0, 1, 2, 2, 2, 3, 1 ]
 
 [node name="TrafficLightsDemo" type="Node2D"]
+script = ExtResource( 7 )
 
 [node name="TimedTrafficLights" type="Node2D" parent="."]
 position = Vector2( -63.908, 78.2032 )
