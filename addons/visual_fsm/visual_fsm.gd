@@ -10,7 +10,11 @@ var _logger = null
 
 
 func _set_current_state(_state : VFSMState):
+	var _old_state_name = "NULL"
+	var _new_state_name = "NULL"
+	
 	if _current_state:
+		_old_state_name = _current_state.name
 		_current_state.exit(self)
 		for trigger_id in _current_state.trigger_ids:
 			fsm.get_trigger(trigger_id).exit(self, _state)
@@ -18,9 +22,13 @@ func _set_current_state(_state : VFSMState):
 	_current_state = _state
 	
 	if _current_state:
+		_new_state_name = _current_state.name
 		_current_state.enter(self)
 		for trigger_id in _current_state.trigger_ids:
 			fsm.get_trigger(trigger_id).enter(self, _state)
+	
+	if _logger:
+		_logger.write("Switching state: %s -> %s" % [_old_state_name, _new_state_name], LogCategory.Verbose)
 
 func _ready():
 	if Engine.editor_hint:
