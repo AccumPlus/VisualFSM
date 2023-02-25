@@ -3,7 +3,7 @@ extends Node
 
 onready var _parent_node = get_parent()
 var LoggerInterface = preload("logger_interface.gd")
-var LogCategory = LoggerInterface.LogCategory
+var LogLevel = LoggerInterface.LogLevel
 export var fsm : Resource
 var _current_state: VFSMState
 var _logger = null
@@ -28,7 +28,7 @@ func _set_current_state(_state : VFSMState):
 			fsm.get_trigger(trigger_id).enter(self, _state)
 	
 	if _logger:
-		_logger.write("Switching state: %s -> %s" % [_old_state_name, _new_state_name], LogCategory.Verbose)
+		_logger.write("Switching state: %s -> %s" % [_old_state_name, _new_state_name], LogLevel.Verbose)
 
 func _ready():
 	if Engine.editor_hint:

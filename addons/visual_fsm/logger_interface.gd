@@ -1,6 +1,6 @@
 extends Reference
 
-enum LogCategory {
+enum LogLevel {
 	Verbose
 	Info
 	Warning
@@ -8,5 +8,5 @@ enum LogCategory {
 	Fatal
 }
 
-func write(log_message: String, log_category):
+func write(log_message: String, log_level):
 	pass
